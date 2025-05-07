@@ -1,0 +1,16 @@
+serviceAccount: $SERVICE_ACCOUNT
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+steps:
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args:
+  - gcloud
+  - functions
+  - deploy
+  - transform
+  - --region=europe-west1
+  - --source=.
+  - --trigger-http
+  - --runtime=python310
+  - --entry-point=main
