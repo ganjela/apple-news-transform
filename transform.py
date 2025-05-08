@@ -1,9 +1,6 @@
 from pandas import json_normalize
 import pandas as pd
-pd.set_option('display.max_rows', 50)
-pd.set_option('display.max_columns',50)
-pd.set_option('display.width', 50)
-pd.set_option('display.max_colwidth', 50)
+
 class Transformer:
      def __init__(self, data):
          self.df = json_normalize(data)
@@ -22,4 +19,4 @@ class Transformer:
 
         self.df["published_at"] = pd.to_datetime(self.df["published_at"])
 
-        return self.df
+        return self.df.to_json()
